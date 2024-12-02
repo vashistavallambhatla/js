@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',() => {
+            const button = document.querySelector('.btn');
+            button.addEventListener('click',() => {
+                alert("Button was clicked!")
+                console.log('Button was clicked!')
+            })
+        })
+    </script>
+    <style>
+        *{
+            margin : 0;
+            padding: 0;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            background: linear-gradient(135deg,white,beige);
+        }
+        .btn {
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button class="btn">Click Here</button>
+    </main>
+</body>
+</html>
