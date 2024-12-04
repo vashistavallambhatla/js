@@ -21,18 +21,23 @@ function task3(callback,i) {
     },3000)
 }
 
+
 tasks.push(task1)
 tasks.push(task2)
 tasks.push(task3)
 
 function callback(i){
     console.log(`task${i} completed!`)
+    if(checkIndex(i+1)) taskScheduler(i+1,tasks)
 }
 
-function taskScheduler(tasks,callback) {
-    for(let i=0;i<tasks.length;i++){
-        tasks[i](callback,i+1)
-    }
+function checkIndex(i){
+    if(i<tasks.length) return true
+    else return false
 }
 
-taskScheduler(tasks,callback)
+function taskScheduler(i,tasks) {
+    tasks[i](callback,i)
+}
+
+taskScheduler(0,tasks,callback)

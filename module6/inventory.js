@@ -33,7 +33,7 @@ function calculateTotalValue(){
 
 addProduct("Pen",800,10)
 
-console.log(inventory)
+console.log(inventory)  
 
 updateQuantity("Pen",20)
 
