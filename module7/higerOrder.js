@@ -1,17 +1,30 @@
-const stepArray = function(start,end,step,func){
-    let result = [];
-    result.push(start);
-    let i = start;
-    while(true){
-        i=func(i,step);
-        if(i<=end) result.push(i);
-        else break;
+function createStepIterator(start, end, step) {
+  let currentValue = start;
+  
+  // Custom iterator object
+  return {
+    next() {
+      if (currentValue <= end) {
+        let value = currentValue;
+        currentValue += step;
+        return { value, done: false };
+      }
+      return { done: true };
+    },
+
+    // Method to return the whole array using the iterator
+    collect() {
+      let result = [];
+      let current = this.next();
+      while (!current.done) {
+        result.push(current.value);
+        current = this.next();
+      }
+      return result;
     }
-    return result
+  };
 }
 
-function step_generate(number,step){
-    return number+step;
-}
-
-console.log(stepArray(0,10,3,step_generate))
+// Example usage
+const iterator = createStepIterator(1, 10, 2);
+console.log(iterator.collect()); // Output: [1, 3, 5, 7, 9]
